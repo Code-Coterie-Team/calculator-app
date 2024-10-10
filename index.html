@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Calculator app</title>
+  
+</head>
+<body>
+    <div class="main-section">
+      <div class="theme">
+        <span>calc</span>
+        
+        <div class="theme-section">
+          <span style="font-size: 1rem;">Theme</span>
+          <div class="change-theme">
+            <div class="count-theme">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <input type="text" id="result">
+      
+      <div class="calc-button">
+        <input type='button' value="7" onclick="getValue(value)">
+        <input type="button" value="8"onclick="getValue(value)">
+        <input type="button" value="9"onclick="getValue(value)">
+        <input type="button" value="Del" onclick="del()">
+        <input type="button" value="4" onclick="getValue(value)">
+        <input type="button" value="5" onclick="getValue(value)">
+        <input type="button" value="6" onclick="getValue(value)">
+        <input type="button" value="+" id="" onclick="getValue(value)">
+        <input type="button" value="1" onclick="getValue(value)">
+        <input type="button" value="2" onclick="getValue(value)">
+        <input type="button" value="3" onclick="getValue(value)">
+        <input type="button" value="-" onclick="getValue(value)">
+        <input type="button" value="." onclick="getValue(value)">
+        <input type="button" value="0" onclick="getValue(value)">
+        <input type="button" value="/" onclick="getValue(value)">
+        <input type="button" value="x" onclick="getValue(value)">
+        <input type="button" class="item8" value="Reset" onclick="clr()"> 
+        <input type="button" class="item9" value="=" onclick="calculate()"> 
+      </div>
+    </div>
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Arezoo</a>.
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
