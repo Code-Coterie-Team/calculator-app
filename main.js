@@ -1,27 +1,29 @@
 
-    const showVar=document.getElementById('result');
+const showVar=document.getElementById('result');
 
 function getValue(val){
-    document.getElementById('result').value+=val;
-
+    showVar.value+=val;
+    
 }
 
 function clr(){
-   showVar.value = "" ;
+     showVar.value='';
 
 }
 function del(){
-    // showVar.substring(0,showVar.length-1);
+    const delet=document.getElementById('result').value.slice(0,-1);
+    showVar.value=delet;
 }
 function calculate(){
     const display=document.getElementById('result');
     const experssion=display.value;
     const showResult=handelExpression(experssion);
     
-    display.value=showResult;
+    display.value=showResult
+    
 }
 function handelExpression(exp) {
-    const array = exp.match(/(\d+|\x|\+|\-|\s+|\/)/g).map(item => item.trim())
+    const array = exp.match(/(\d+(\.\d+)?|\x|\+|\-|\s+|\/)/g).map(item => item.trim())
                     .filter(item => item);
 
     
@@ -29,6 +31,7 @@ function handelExpression(exp) {
 }
 
 function evaluateExpression(array){
+   
     const len=array.length;
     while(len > 1 ){
         const indexMultiply=array.indexOf('x');
@@ -56,7 +59,7 @@ function evaluateExpression(array){
             const result = leftOperand + rightOperand;
             
             array.splice(indexAdd-1,3,result);
-            console.log(result);
+           
             continue;
         }
         const indexSub=array.indexOf('-');
@@ -68,7 +71,6 @@ function evaluateExpression(array){
             
             continue;
         }
-        console.log(array[0])
         return array[0];
         
     }
