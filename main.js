@@ -7,31 +7,31 @@ function getValue(val){
 }
 
 function clr(){
-     showVar.value='';
+    showVar.value='';
 
 }
 function del(){
-    const delet=document.getElementById('result').value.slice(0,-1);
+    const delet=showVar.value.slice(0,-1);
     showVar.value=delet;
+
+    
 }
 function calculate(){
-    const display=document.getElementById('result');
-    const experssion=display.value;
+    
+    const experssion=showVar.value;
     const showResult=handelExpression(experssion);
     
-    display.value=showResult
+    showVar.value=showResult;
     
 }
 function handelExpression(exp) {
-    const array = exp.match(/(\d+(\.\d+)?|\x|\+|\-|\s+|\/)/g).map(item => item.trim())
-                    .filter(item => item);
-
-    
+    const array = exp.replace(/\s/g,'').match(/(\d+(\.\d+)?|\x|\+|\-|\+|\/)/g).map(item => item.trim());
+    console.log(array);
     return evaluateExpression(array); 
 }
 
 function evaluateExpression(array){
-   
+
     const len=array.length;
     while(len > 1 ){
         const indexMultiply=array.indexOf('x');
@@ -42,6 +42,7 @@ function evaluateExpression(array){
             const result= leftOperand * rightOperand;
             
             array.splice(indexMultiply-1,3,result);
+            console.log(array);
             continue;
         }
         if (indexDivide !== -1){
@@ -49,26 +50,30 @@ function evaluateExpression(array){
             const rightOperand = Number(array[indexDivide + 1]);
             const result=leftOperand/rightOperand;
             array.splice(indexDivide-1,3,result);
-            
+            console.log(array);
             continue;
         }
+
         const indexAdd=array.indexOf('+');
-        if(indexAdd !== -1){
+        const indexSub=array.indexOf('-');
+
+        if((indexAdd<indexSub ||indexSub===-1 ) && indexAdd !== -1 ){
+            console.log('s');
             const leftOperand = Number(array[indexAdd- 1]);
             const rightOperand = Number(array[indexAdd + 1]);
             const result = leftOperand + rightOperand;
             
             array.splice(indexAdd-1,3,result);
-           
+            console.log(array);
             continue;
         }
-        const indexSub=array.indexOf('-');
-        if(indexSub !== -1){
+        
+        if(indexSub !== -1 ){
             const leftOperand = Number(array[indexSub- 1]);
             const rightOperand = Number(array[indexSub + 1]);
             const result=leftOperand-rightOperand;
             array.splice(indexSub-1,3,result);
-            
+            console.log(array);
             continue;
         }
         return array[0];
